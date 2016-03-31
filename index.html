@@ -1,0 +1,69 @@
+<html ng-app="escolaWeb"> 
+
+<head> 
+	
+	<title> Escola Web</title>
+	<script src="libs/angular.js" > </script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	
+	<style> 
+		.jumbotron {
+			width: 400px;
+			
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 200px;
+			margin-bottom: auto;
+		}
+	
+	</style>
+	<script> 
+		angular.module("escolaWeb", []);
+		angular.module("escolaWeb").controller("loginCtrl", function($scope) {
+			$scope.users = [
+				{login: "gesn", password: "123456"},
+				{login: "sara", password: "12345"}
+			];
+			$scope.doLogin = function(log, pass) {
+				console.log($scope.users.length);
+				for (i = 0; i < $scope.users.length; i++) {
+					
+					if($scope.users[i].login == $scope.login) {
+						if($scope.users[i].password == $scope.password) {
+							$scope.message = "Welcome";
+							break;
+						}
+					}
+				}
+				$scope.message = "Login or Password incorrect";
+			};
+		});
+	</script>
+	
+	
+</head>
+
+<body ng-controller="loginCtrl" >
+
+<div class="jumbotron">
+
+	<h2> Login</h2>
+
+	<input class="form-control" type="text" placeholder="Login" ng-model="login" />
+
+	<input class="form-control" type="text" placeholder="Password" ng-model="password" />
+	
+	<button class="btn btn-primary btn-block" ng-click="doLogin(login, password)" > Enter</button>
+	
+	<h6 > {{message}}</h6>
+	
+</div>
+
+</body>
+
+
+
+
+
+</html>
