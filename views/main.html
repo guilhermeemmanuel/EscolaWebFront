@@ -1,0 +1,53 @@
+<html ng-app="escolaWeb">
+
+<head>
+	
+	<title> Welcome</title>
+	<script src="../libs/angular.js" > </script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+
+	<script>
+		angular.module("escolaWeb",[]);
+		angular.module("escolaWeb").controller("escolasCtrl", function($scope) {
+			$scope.escolas = [
+				{nome: "UFCG", alunos: "100"},
+				{nome: "UEPB", alunos: "23"},
+				{nome: "UFPB", alunos: "40"}
+			];
+		
+		});
+	</script>
+	
+</head>
+
+
+<body ng-controller="escolasCtrl">
+
+<div class="jumbotron">
+
+	<h3> Escolas</h3>
+
+
+	<table class="table table-striped">
+		<tr>
+			<th> Nome</th>
+			<th> Alunos</th>
+		</tr>
+		<tr ng-repeat=" escola in escolas">
+			<td> {{escola.nome}}</td>
+			<td> {{escola.alunos}}</td>
+			
+		</tr>
+	
+	
+	</table>
+
+
+
+</div>
+
+
+</body>
+
+
+</html>
