@@ -4,62 +4,18 @@
 	
 	<title> Escola Web</title>
 	<script src="libs/angular.js" > </script>
+	<script src="libs/angular-route.js" > </script>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	
-	<style> 
-		.jumbotron {
-			width: 400px;
-			
-			text-align: center;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 200px;
-			margin-bottom: auto;
-		}
-	
-	</style>
-	<script> 
-		angular.module("escolaWeb", []);
-		angular.module("escolaWeb").controller("loginCtrl", function($scope) {
-			$scope.users = [
-				{login: "gesn", password: "123456"},
-				{login: "sara", password: "12345"}
-			];
-			$scope.doLogin = function(user) {
-				var success;
-				if(typeof user != 'undefined') {
-					console.log(user.login);
-					if(typeof user.login == 'undefined' || user.login == '' 
-						|| typeof user.password == 'undefined' || user.password == '') {
-						$scope.message = "Login and Password are required";
-						return;
-					}
-					for (i = 0; i < $scope.users.length; i++) {
-						if($scope.users[i].login == user.login) {
-							if($scope.users[i].password == user.password) {
-								success = true;
-								$scope.message = "Welcome";
-								break;
-							}
-						}
-					}
-					if(!success) {
-						$scope.message = "Login or Password incorrect";
-					}
-				}
-				else {
-					$scope.message = "Login and Password are required";
-				}
-			};
-		});
-	</script>
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script src="js/app.js" > </script>
+	<script src="js/controllers/loginCtrl.js"> </script>
 	
 	
 </head>
 
 <body ng-controller="loginCtrl" >
 
-<div class="jumbotron">
+<div class="jumbotron loginBack">
 
 	<h2> Login</h2>
 
@@ -72,6 +28,8 @@
 	<h6 > {{message}}</h6>
 	
 </div>
+
+<div ng-include="'views/footer.html'"> </div>
 
 </body>
 

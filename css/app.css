@@ -1,0 +1,35 @@
+.loginBack {
+	width: 400px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+	margin-bottom: auto;
+}
+.escolasBack {
+	width: 600px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	margin-bottom: auto;
+	
+}
+.itemSelected {
+	background: red;
+}
+.centered {
+	text-align: center;
+	margin-top: 50px;
+}
+.margined {
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.leftAlign{
+	float: left;	
+}
+.rightAlign{
+	float: right;
+	
+}
