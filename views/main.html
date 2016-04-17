@@ -3,14 +3,17 @@
 <head>
 	
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> Welcome</title>
+	
 	<script src="../libs/angular.js" > </script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<script src="../libs/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="../libs/bootstrap-3.3.6-dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../css/app.css">
 	<script src="../js/app.js" > </script>
 	<script src="../js/controllers/escolasCtrl.js" ></script>
+	<script src="../js/services/escolasAPIService.js" ></script>
 	
 </head>
 
@@ -20,20 +23,23 @@
 <div class="jumbotron escolasBack">
 
 
-	<div class="col-xs-4">
-		<input class="form-control" type="text" placeholder="Nome da Escola" ng-model="buscaNome"> </input>
-	</div>
 	
-	<div>
-		<button type="button" class="btn btn-primary rightAlign margined" data-toggle="modal" data-target="#addEscolaModal">Adicionar Turma</button>
+		<form class="form-inline" >
+			<div class="form-group has-success has-feedback leftAlign margined">
+				<input class="form-control col-xs-4" type="text" placeholder="Nome da Escola.." ng-model="buscaNome"> </input>
+				<span class="glyphicon glyphicon-search form-control-feedback"> </span>
+			</div>
+			<button type="button" class="btn btn-primary rightAlign margined" data-toggle="modal" data-target="#addEscolaModal">Adicionar Turma</button>
 
-		<button type="button" class="btn btn-danger rightAlign margined" ng-click="apagarEscolas(escolas)">Apagar Turma</button>
-	</div>
+			<button type="button" class="btn btn-danger rightAlign margined" ng-click="apagarEscolas(escolas)">Apagar Turma</button>	
+		</form>
+
+	
 	
 	<h3 class="centered"> Escolas</h3>
 
-	<table class="table table-striped">
-		<tr>
+	<table class="table">
+		<tr class="table-header">
 			<th></th>
 			<th> Nome</th>
 			<th> Alunos</th>
@@ -53,20 +59,23 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button class="close" data-dismiss="modal" ng-click="eraseEscolaForm()">&times;</button>
-					<h4> Adicionar Turma</h4>
+					<h4> Adicionar Escola</h4>
 				</div>
 			
 				<div class="modal-body">
 					<form name="TurmaForm" >
 						<input class="form-control" type="text" placeholder="Nome" name="name" ng-model="turma.nome" ng-required="true" ng-minlength="5"> </input>
-							<div ng-show="TurmaForm.name.$error.required && TurmaForm.name.$dirty" class="alert alert-danger">
+							<div ng-show="TurmaForm.name.$error.required && TurmaForm.name.$dirty" class="alert alert-danger margin-top1">
+								<span class="glyphicon glyphicon-exclamation-sign"> </span>
 								Nome é requerido
 							</div>
-							<div ng-show="TurmaForm.name.$error.minlength && TurmaForm.name.$dirty" class="alert alert-danger">
+							<div ng-show="TurmaForm.name.$error.minlength && TurmaForm.name.$dirty" class="alert alert-danger margin-top1">
+								<span class="glyphicon glyphicon-exclamation-sign"> </span>
 								Nome deve ter 5 caracteres
 							</div>
-						<input class="form-control" type="number" placeholder="Numero de Alunos" name="noAlunos" ng-model="turma.alunos" ng-required="true"> </input>
-							<div ng-show="TurmaForm.noAlunos.$invalid && TurmaForm.noAlunos.$dirty" class="alert alert-danger">
+						<input class="form-control margin-top1" type="number" placeholder="Numero de Alunos" name="noAlunos" ng-model="turma.alunos" ng-required="true"> </input>
+							<div ng-show="TurmaForm.noAlunos.$invalid && TurmaForm.noAlunos.$dirty" class="alert alert-danger margin-top1">
+								<span class="glyphicon glyphicon-exclamation-sign"> </span>
 								Numero de Alunos é requerido
 							</div>
 					</form>

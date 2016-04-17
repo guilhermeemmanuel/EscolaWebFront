@@ -1,11 +1,12 @@
-angular.module("escolaWeb").controller("escolasCtrl", function($scope) {
-			$scope.escolas = [
-				{nome: "UFCG", alunos: "100"},
-				{nome: "UEPB", alunos: "23"},
-				{nome: "UFPB", alunos: "40"}
-			];
+angular.module("escolaWeb").controller("escolasCtrl", function($scope, escolasAPI) {
+			if(typeof(Storage) !== "undefined") {
+				console.log("support");
+				$scope.escolas = escolasAPI.getEscolas();
+			} else {
+				console.log("support n");
+			}
 			$scope.addEscola = function (escola) {
-				$scope.escolas.push(angular.copy(escola));
+				$scope.escolas = escolasAPI.addEscola(escola);
 				$scope.eraseEscolaForm();
 				$scope.closeAddEscolaModal();
 			};
@@ -18,12 +19,7 @@ angular.module("escolaWeb").controller("escolasCtrl", function($scope) {
 			};
 			
 			$scope.apagarEscolas = function(escolas) {
-				$scope.escolas = escolas.filter(function(escola) {
-					if(!escola.selecionado) {
-						return escola;
-					}
-				});
-				
+				$scope.escolas = escolasAPI.deleteEscolas(escolas);
 			}
 		
 		});
