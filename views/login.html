@@ -1,0 +1,13 @@
+<div ng-controller="loginCtrl" class="jumbotron loginBack">
+
+	<h2> Login</h2>
+
+	<input class="form-control" type="text" placeholder="Login" ng-model="user.login" />
+
+	<input class="form-control" type="text" placeholder="Password" ng-model="user.password" />
+	
+	<button class="btn btn-primary btn-block" ng-click="doLogin(user)" > Enter</button>
+	
+	<h6 > {{message}}</h6>
+	
+</div>

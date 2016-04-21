@@ -1,4 +1,4 @@
-angular.module("escolaWeb").controller("loginCtrl", function($scope) {
+angular.module("escolaWeb", ["ngRoute"]).controller("loginCtrl", function($scope) {
 			$scope.users = [
 				{login: "gesn", password: "123456"}
 			];
